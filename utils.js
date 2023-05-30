@@ -7,7 +7,6 @@ const articlesApi = axios.create({
 
 
 //FUNCTIONS
-
 function fetchArticles() {
     return articlesApi
         .get('/articles')
@@ -33,7 +32,6 @@ function fetchArticleCard() {
 
 
 //EXPORTS
-
 export {
     fetchArticles,
     fetchArticleCard

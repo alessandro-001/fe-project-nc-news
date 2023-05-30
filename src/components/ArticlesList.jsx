@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 
 //LISTING ALL THE ARTICLES FROM THE API
-
 function ArticlesList () {
     const [articles, setArticles] = useState([]);
 
@@ -14,7 +13,7 @@ function ArticlesList () {
         })
     }, []);
 
-    
+
 //RENDERING
     return (
         <main className="articles-list">
