@@ -3,18 +3,27 @@ import { fetchArticles } from "../../utils";
 import { Link } from "react-router-dom";
 
 
-//LISTING ALL THE ARTICLES FROM THE API
+/* LISTING ALL THE ARTICLES FROM THE API */
+
 function ArticlesList () {
     const [articles, setArticles] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         fetchArticles().then(({articles}) => {
-            setArticles(articles);
+            setArticles(articles)
+            setIsLoading(false)
         })
     }, []);
 
+    //LOADING STATE
+    if (isLoading) {
+        return (
+            <p className="loading-state">Loading...</p>
+        )
+    }
 
-//RENDERING
+    //RENDERING
     return (
         <main className="articles-list">
             <h2>All available articles:</h2>
