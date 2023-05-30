@@ -33,7 +33,6 @@ function fetchArticleCard() {
 
 
 //EXPORTS
-
 export {
     fetchArticles,
     fetchArticleCard
