@@ -5,7 +5,6 @@ const articlesApi = axios.create({
 })
 
 
-
 //FUNCTIONS
 
 function fetchArticles() {
@@ -19,9 +18,9 @@ function fetchArticles() {
         });
 }
 
-function fetchArticleCard() {
+function fetchArticleCard(article_id) {
     return articlesApi
-        .get('/articles/article_id')
+        .get(`/articles/${article_id}`)
         .then((res) => {
             return res.data
         })
@@ -29,7 +28,6 @@ function fetchArticleCard() {
             console.log(err)
         });
 }
-
 
 
 //EXPORTS
