@@ -1,12 +1,12 @@
 import axios from "axios";
 
+
 const articlesApi = axios.create({
     baseURL: 'https://nc-news-be-project.onrender.com/api'
 })
 
 
-//FUNCTIONS
-
+/*  FUNCTIONS  */
 function fetchArticles() {
     return articlesApi
         .get('/articles')
@@ -29,9 +29,21 @@ function fetchArticleCard(article_id) {
         });
 }
 
+function fetchComments(article_id) {
+    return articlesApi
+        .get(`/articles/${article_id}/comments`)
+        .then((res) => {
+            return res.data
+        })
+        .catch(err => {
+            console.log(err)
+        }); 
+}
 
-//EXPORTS
+
+/*  EXPORTS  */
 export {
     fetchArticles,
-    fetchArticleCard
+    fetchArticleCard,
+    fetchComments
 }

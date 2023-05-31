@@ -5,6 +5,24 @@
   text-align: center;
 }
 
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #00000068;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  font-size: larger;
+  filter: drop-shadow(0 0 3em #00ffb3cc); 
+}
+
+#homepage-title {
+  filter: drop-shadow(0 0 3em #00ffb3cc);
+}
+
+
 ul {
   list-style-type: none;
   text-align: center;
@@ -25,6 +43,11 @@ li {
   height: 30em;
   object-fit: cover;
 }
+
+h2 {
+  margin: 50px;
+}
+
 
 
 /* .logo:hover {
