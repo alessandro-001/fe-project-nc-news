@@ -5,7 +5,26 @@
   text-align: center;
 }
 
+ul {
+  list-style-type: none;
+  text-align: center;
+  padding: 0%;
+}
 
+li {
+  display: inline-block;
+  margin: 0 10px;
+  text-align: center;}
+
+.article-img{
+  width: 450px;
+}
+
+.grid-item {
+  width: 30em;
+  height: 30em;
+  object-fit: cover;
+}
 
 
 /* .logo:hover {
