@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { fetchComments } from "../../utils";
 import React from 'react';
+import moment from 'moment'
 
 
 /*  FETCHING THE COMMENTS TO DISPLAY  */
@@ -26,7 +27,7 @@ function CommentSection({article_id}) {
     //LOADING STATE
     if (isLoading) {
         return (
-            <p className="loading-state">Loading...</p>
+            <span class="loader"></span>
         )
     }
 
@@ -39,8 +40,8 @@ function CommentSection({article_id}) {
             <li key={comment_id}>
                 <p>{body}</p>
                 <p>Votes: {votes}</p>
-                <p>By: {author} | {created_at}</p>
-                <br/>
+                <small>By: {author} | Posted on: {moment(`${created_at}`).format("Do MMMM YYYY")}{" "}</small>
+                <br/><br/>
             </li> 
             ))}
         </ul>       

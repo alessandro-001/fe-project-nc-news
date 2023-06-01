@@ -1,9 +1,11 @@
 import React from "react";
 
+/* HOMEPAGE */
+
 function Home () {
     return (
         <header className="home-page">
-            <h1 id="homepage-title"> Welcome to NC news</h1>
+            <span class="home-page-floater"></span>
             <p>Please use the navigation bar to access articles</p>
         </header>
     )

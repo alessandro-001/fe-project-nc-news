@@ -19,7 +19,7 @@ function ArticlesList () {
     //LOADING STATE
     if (isLoading) {
         return (
-            <p className="loading-state">Loading...</p>
+            <span class="loader"></span>
         )
     }
 

@@ -43,17 +43,18 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #14040420;
   cursor: pointer;
   transition: border-color 0.25s;
+  margin: 10px;
 }
-button:hover {
-  border-color: #646cff;
+.article-UPvote-button:hover{
+  border-color: #67ff64; 
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.article-DOWNvote-button:hover{
+  border-color: #ea0000; 
 }
+
 
 @media (prefers-color-scheme: light) {
   :root {
