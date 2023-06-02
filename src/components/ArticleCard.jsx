@@ -1,14 +1,21 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { fetchArticleCard, upVoteArticle, downVoteArticle } from "../../utils";
+import { fetchArticleCard, voteArticle } from "../../utils";
 import CommentSection from "./CommentSection";
+import PostComment from "./PostComment";
 
 
 /* SINGLE ARTICLE CARD */
 
-function ArticleCard() {
+function ArticleCard({user}) {
     const [articleCard, setArticleCard] = useState({})
     const [isLoading, setIsLoading] = useState(true);
+    const [commentSection, setCommentSection] = useState([])
+
+    const [clickedUp, setClickedUp] = useState(false);
+    const [clickedDown, setClickedDown] = useState(false);
+
+
     const {article_id} = useParams()
 
     useEffect(() => {
@@ -24,7 +31,9 @@ function ArticleCard() {
         setArticleCard((articleCard) => {
             return {...articleCard, votes: articleCard.votes + 1}
         })
-        upVoteArticle(article_id).then(() => {
+        voteArticle(article_id, 1).then(() => {
+            setClickedDown(false)
+            setClickedUp(true)
             return {...articleCard, votes: articleCard.votes - 1}
         })
         .catch((err) => {
@@ -38,7 +47,9 @@ function ArticleCard() {
         setArticleCard((articleCard) => {
             return {...articleCard, votes: articleCard.votes - 1}
         })
-        downVoteArticle(article_id).then(() => {
+        voteArticle(article_id, -1).then(() => {
+            setClickedUp(false)
+            setClickedDown(true)
             return {...articleCard, votes: articleCard.votes + 1}
         })
         .catch((err) => {
@@ -48,12 +59,10 @@ function ArticleCard() {
         })
     }
 
-
-
     //LOADING STATE
     if (isLoading) {
         return (
-            <span class="loader"></span>
+            <span className="loader"></span>
         )
     }
 
@@ -71,14 +80,28 @@ function ArticleCard() {
                 className="article-img">
             </img>
             <br/>
-            <button onClick={() => {handleUpvote(article_id)}} className="article-UPvote-button">👍</button>
-            <button onClick={() => {handleDownVote(article_id)}} className="article-DOWNvote-button">👎</button>
+            <button 
+                onClick={() => {handleUpvote(article_id)}} 
+                className="article-UPvote-button"
+                type="submit" 
+                disabled={clickedUp}
+                >👍</button>
+            <button 
+                onClick={() => {handleDownVote(article_id)}} 
+                className="article-DOWNvote-button"
+                type="submit"
+                disabled={clickedDown}
+                >👎</button>
             <br/>
             <small>{articleCard.votes}</small>
-            <CommentSection article_id = {article_id} />
+            <br/><br/><br/>
+            <PostComment user={user} setCommentSection={setCommentSection} />
+            <br/>
+            <CommentSection commentSection={commentSection} setCommentSection={setCommentSection} />
         </main>
       </>
     )
 }
 
 export default ArticleCard;
+

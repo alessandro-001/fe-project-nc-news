@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 const articlesApi = axios.create({
     baseURL: 'https://nc-news-be-project.onrender.com/api'
 })
@@ -40,9 +39,8 @@ function fetchComments(article_id) {
         }); 
 }
 
-/*-------afternoon work-------*/
-function upVoteArticle(article_id) {
-    const patchBody = {inc_votes: 1}
+function voteArticle(article_id, number_votes) {
+    const patchBody = {inc_votes: number_votes}
     return articlesApi
         .patch(`/articles/${article_id}`, patchBody)
         .then(({data}) => data)
@@ -51,15 +49,17 @@ function upVoteArticle(article_id) {
         });
 }
 
-function downVoteArticle(article_id) {
-    const patchBody = {inc_votes: -1}
+function postComment(newComment, user, article_id) {
+    const commentToAdd = {username: user, body: newComment}
     return articlesApi
-        .patch(`/articles/${article_id}`, patchBody)
-        .then(({data}) => data)
+        .post(`/articles/${article_id}/comments`, commentToAdd)
+        .then(({data}) => {
+            return data.commentPosted[0]
+        })
         .catch(err => {
             console.log(err)
         });
-}   
+}
 
 
 /*  EXPORTS  */
@@ -67,6 +67,6 @@ export {
     fetchArticles,
     fetchArticleCard,
     fetchComments,
-    upVoteArticle,
-    downVoteArticle
+    voteArticle,
+    postComment
 }

@@ -2,13 +2,14 @@ import { useState, useEffect } from "react";
 import { fetchComments } from "../../utils";
 import React from 'react';
 import moment from 'moment'
+import { useParams } from "react-router-dom";
 
 
 /*  FETCHING THE COMMENTS TO DISPLAY  */
 
-function CommentSection({article_id}) {
-    const [commentSection, setCommentSection] = useState([])
+function CommentSection({commentSection, setCommentSection}) {
     const [isLoading, setIsLoading] = useState(true);
+    const {article_id} = useParams();
 
     useEffect(() => {
         fetchComments(article_id)
@@ -27,7 +28,7 @@ function CommentSection({article_id}) {
     //LOADING STATE
     if (isLoading) {
         return (
-            <span class="loader"></span>
+            <span className="loader"></span>
         )
     }
 
@@ -39,7 +40,7 @@ function CommentSection({article_id}) {
             {commentSection.map(({ comment_id, author, body, votes, created_at }) => (
             <li key={comment_id}>
                 <p>{body}</p>
-                <p>Votes: {votes}</p>
+                <p>Likes: {votes}</p>
                 <small>By: {author} | Posted on: {moment(`${created_at}`).format("Do MMMM YYYY")}{" "}</small>
                 <br/><br/>
             </li> 
