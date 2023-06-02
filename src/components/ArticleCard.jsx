@@ -12,6 +12,10 @@ function ArticleCard({user}) {
     const [isLoading, setIsLoading] = useState(true);
     const [commentSection, setCommentSection] = useState([])
 
+    const [clickedUp, setClickedUp] = useState(false);
+    const [clickedDown, setClickedDown] = useState(false);
+
+
     const {article_id} = useParams()
 
     useEffect(() => {
@@ -24,11 +28,12 @@ function ArticleCard({user}) {
  
     //VOTE HANDLERS
     function handleUpvote() {
-
         setArticleCard((articleCard) => {
             return {...articleCard, votes: articleCard.votes + 1}
         })
         voteArticle(article_id, 1).then(() => {
+            setClickedDown(false)
+            setClickedUp(true)
             return {...articleCard, votes: articleCard.votes - 1}
         })
         .catch((err) => {
@@ -43,6 +48,8 @@ function ArticleCard({user}) {
             return {...articleCard, votes: articleCard.votes - 1}
         })
         voteArticle(article_id, -1).then(() => {
+            setClickedUp(false)
+            setClickedDown(true)
             return {...articleCard, votes: articleCard.votes + 1}
         })
         .catch((err) => {
@@ -73,8 +80,18 @@ function ArticleCard({user}) {
                 className="article-img">
             </img>
             <br/>
-            <button onClick={() => {handleUpvote(article_id)}} className="article-UPvote-button">👍</button>
-            <button onClick={() => {handleDownVote(article_id)}} className="article-DOWNvote-button">👎</button>
+            <button 
+                onClick={() => {handleUpvote(article_id)}} 
+                className="article-UPvote-button"
+                type="submit" 
+                disabled={clickedUp}
+                >👍</button>
+            <button 
+                onClick={() => {handleDownVote(article_id)}} 
+                className="article-DOWNvote-button"
+                type="submit"
+                disabled={clickedDown}
+                >👎</button>
             <br/>
             <small>{articleCard.votes}</small>
             <br/><br/><br/>

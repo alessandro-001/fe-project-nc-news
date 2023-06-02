@@ -40,7 +40,7 @@ function CommentSection({commentSection, setCommentSection}) {
             {commentSection.map(({ comment_id, author, body, votes, created_at }) => (
             <li key={comment_id}>
                 <p>{body}</p>
-                <p>Votes: {votes}</p>
+                <p>Likes: {votes}</p>
                 <small>By: {author} | Posted on: {moment(`${created_at}`).format("Do MMMM YYYY")}{" "}</small>
                 <br/><br/>
             </li> 

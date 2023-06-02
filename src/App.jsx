@@ -3,7 +3,6 @@ import Home from './components/Home'
 import Nav from './components/Nav'
 import ArticlesList from './components/ArticlesList'
 import ArticleCard from './components/ArticleCard'
-import CommentSection from './components/CommentSection'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { useState } from 'react'
 import { UserContext } from './contexts/userContext'
@@ -28,7 +27,6 @@ function App() {
         <Route path='/' element={<Home />} /> 
         <Route path='/articlesList' element={<ArticlesList />} />
         <Route path='/articles/:article_id' element={<ArticleCard user={user} />} />
-        {/* <Route path='/articles/:article_id/comments' element={<CommentSection setCommentSection={setCommentSection} />} /> */}
       </Routes>
     </main>
     </UserContext.Provider>

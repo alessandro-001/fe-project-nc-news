@@ -6,7 +6,6 @@ import { useParams } from "react-router-dom";
 function PostComment({setCommentSection, user}) {
     const [newComment, setNewComment] = useState('');
     const {article_id} = useParams()
-    // const [isLoading, setIsLoading] = useState(true);
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -18,13 +17,6 @@ function PostComment({setCommentSection, user}) {
                 })
             })
     }
-
-    //LOADING STATE
-    // if (isLoading) {
-    //     return (
-    //         <span className="loader"></span>
-    //     )
-    // }
 
     return (
         <>
@@ -38,7 +30,11 @@ function PostComment({setCommentSection, user}) {
                     onChange={(event)=>{setNewComment(event.target.value)}} >
                     </textarea>
                 <br/>
-                <button name="submit-comment-button" type="submit">Add Comment</button>
+                <button 
+                    name="submit-comment-button" 
+                    type="submit"
+                    disabled={!newComment}
+                    >Add Comment</button>
             </form>
         </>
     )
