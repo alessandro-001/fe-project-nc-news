@@ -2,13 +2,14 @@ import { useState, useEffect } from "react";
 import { fetchComments } from "../../utils";
 import React from 'react';
 import moment from 'moment'
+import { useParams } from "react-router-dom";
 
 
 /*  FETCHING THE COMMENTS TO DISPLAY  */
 
-function CommentSection({article_id}) {
-    const [commentSection, setCommentSection] = useState([])
+function CommentSection({commentSection, setCommentSection}) {
     const [isLoading, setIsLoading] = useState(true);
+    const {article_id} = useParams();
 
     useEffect(() => {
         fetchComments(article_id)
@@ -27,7 +28,7 @@ function CommentSection({article_id}) {
     //LOADING STATE
     if (isLoading) {
         return (
-            <span class="loader"></span>
+            <span className="loader"></span>
         )
     }
 
