@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { fetchArticles } from "../../utils";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 
 /* LISTING ALL THE ARTICLES FROM THE API */
@@ -8,9 +9,10 @@ import { Link } from "react-router-dom";
 function ArticlesList () {
     const [articles, setArticles] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const { topic } = useParams()
 
     useEffect(() => {
-        fetchArticles().then(({articles}) => {
+        fetchArticles(topic).then(({articles}) => {
             setArticles(articles)
             setIsLoading(false)
         })
@@ -22,7 +24,6 @@ function ArticlesList () {
             <span className="loader"></span>
         )
     }
-
     //RENDERING
     return (
         <main className="articles-list">
