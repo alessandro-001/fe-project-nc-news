@@ -7,15 +7,14 @@ const articlesApi = axios.create({
 
 /*  FUNCTIONS  */
 function fetchArticles() {
+    let query = '/articles'
     return articlesApi
-        .get('/articles')
-        .then((res) => {
-            return res.data
-        })
-        .catch(err => {
-            console.log(err)
-        });
-}
+      .get(query)
+      .then((res) => {
+        return res.data;
+      });
+  }
+
 
 function fetchArticleCard(article_id) {
     return articlesApi
@@ -62,11 +61,24 @@ function postComment(newComment, user, article_id) {
 }
 
 
+function fetchTopics() {
+    return articlesApi
+        .get("/topics")
+        .then((res) => {
+        return res.data;
+        })
+        .catch(err => {
+            console.log(err)
+        });
+ }
+
+
 /*  EXPORTS  */
 export {
     fetchArticles,
     fetchArticleCard,
     fetchComments,
     voteArticle,
-    postComment
+    postComment,
+    fetchTopics
 }
