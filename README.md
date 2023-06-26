@@ -13,10 +13,15 @@ I have developed this repository for my bootcamp front-end project, designed to 
 # Instructions:
 In order to correctly use this repo create a lock clone using the following commands:
 
-1. git clone https://github.com/alessandro-001/fe-project-nc-news
-2. cd fe-project-nc-news
-3. npm install
-
+```console
+git clone https://github.com/alessandro-001/fe-project-nc-news
+cd fe-project-nc-news
+npm install
+```
+Run locally using:
+```console
+npm run dev
+```
 
 
 # System Requirements:
