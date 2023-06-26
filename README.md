@@ -30,8 +30,6 @@ This project had been built using Node JS: 20.0.0
 
 
 # Feedback and Suggestions:
-Please feel free to send any bugs and suggestions here:
-[Issues · alessandro-001/fe-project-nc-news · GitHub](https://github.com/alessandro-001/fe-project-nc-news/issues)
-
+Please feel free to send any bugs and suggestions here: https://github.com/alessandro-001/fe-project-nc-news/issues
 
 Thank you!
