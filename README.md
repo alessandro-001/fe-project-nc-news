@@ -11,7 +11,7 @@ I have developed this repository for my bootcamp front-end project, designed to 
 
 
 # Instructions:
-In order to correctly use this repo create a lock clone using the following commands:
+In order to correctly use this repo create a local clone using the following commands:
 
 ```console
 git clone https://github.com/alessandro-001/fe-project-nc-news
